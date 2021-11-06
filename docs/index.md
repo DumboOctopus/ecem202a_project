@@ -4,8 +4,8 @@ Provide a brief overview of the project objhectives, approach, and results.
 
 # Team
 
-#1 Ting Chun Chou 
-#2 Neil Prajapati
+\#1 Ting Chun Chou 
+\#2 Neil Prajapati
 
 # Required Submissions
 
