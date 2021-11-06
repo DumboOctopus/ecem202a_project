@@ -1,6 +1,8 @@
 # Abstract
 
-Provide a brief overview of the project objhectives, approach, and results.
+We will compare the performance of a robot when the control algorithm is executed on an separate device and when the control algorithm is executed on the robot itself. 
+
+We will explore this problem in a simple use case where a robot tries to navigate a hallway filled with obstacles.
 
 # Team
 
