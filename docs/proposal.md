@@ -9,7 +9,7 @@ We will explore this problem with a particular use case. We will have a robot wh
 We are going to utilize the built-in color sensor and proximity sensor for obstacle detection. The proximity sensor can help us to detect the distance between the obstacles and the robot. The color sensor will identify what kind of obstacles it is.
 For example, if there’s a person (a yellow obstacle) in front of the robot, the robot should try to maintain a safer distance from him. On the other hand, if there’s a non-human obstacle (a blue obstacle), the robot can get closer to it.
 
-One use case is that there’s a robot that can be controlled by itself and manually outside of the building. However, after getting into the building, there are two cases of how the robot moves. The first case is that the building trusts the robot, and allows the robot to control itself. Another case is that the building does not trust the robot and does not allow it to roam inside the building, it would take the control of the robot and navigate it to avoid obstacles. Our project will evaluate the performance of the robot in both of these cases.
+One real world application is a robot that can be controlled by itself and manually outside of the building. However, after getting into the building, there are two cases of how the robot moves. The first case is that the building trusts the robot, and allows the robot to control itself. Another case is that the building does not trust the robot and does not allow it to roam inside the building, it would take the control of the robot and navigate it to avoid obstacles. Our project will evaluate the performance of the robot in both of these cases.
 
 
 ## 2. State of the Art & Its Limitations
