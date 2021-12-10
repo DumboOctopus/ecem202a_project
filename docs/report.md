@@ -143,7 +143,7 @@ By calculating the area below the curve, we can get the average precision equals
 From Figure 8, we can see that as the image size decreases, the average precision decreases too.
 
 <p align="center">
-  <img src="media/image3.png" width="200" height="200"/>
+  <img src="media/image3.png" width="600" height="300"/>
 </p>
 <p align="center">
   Figure 8: Average Precision versus Compression Method and Image Size
