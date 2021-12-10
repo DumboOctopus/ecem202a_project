@@ -13,17 +13,36 @@ Lossy compression is a commonly used technique in different fields, especially e
 
 # 1. Introduction
 
-This section should cover the following items:
-
 * Motivation & Objective: 
     Embedded and Internet of Things (IoT) devices are becoming more and more important these days. They often rely on Artificial Intelligence to make them more powerful. However, embedded devices normally do not have powerful computing capabilities to do complicated tasks, so it’s common to send data to the server, which has stronger computing power, to process. In our project, we built a robot avoiding obstacles while it’s running in the building. The robot will capture the image in front of it and send it to the server to tell whether there’s an obstacle. We analyzed the trade-off between lossy compression versus model accuracy and request time. We used two Raspberry Pis, one as client, one as server, to emulate the scenario of sending images to server to perform object detection, then send back results to client.
     
-* State of the Art & Its Limitations: How is it done today, and what are the limits of current practice?
-* Novelty & Rationale: What is new in your approach and why do you think it will be successful?
-* Potential Impact: If the project is successful, what difference will it make, both technically and broadly?
-* Challenges: What are the challenges and risks?
-* Requirements for Success: What skills and resources are necessary to perform the project?
-* Metrics of Success: What are metrics by which you would check for success?
+* State of the Art & Its Limitations:
+    Although lossy compression is widely used nowadays, we are still not very clear about the trade-off. Lossy compression could cause the negative result because of the information loss. However, it can speed up the system process time at the same time.
+
+The idea of compressing images before running through neural networks has been explored in the past. Previous papers have primarily explored JPEG compression and HEVC compression methods and their effect on neural networks. In some use cases, compression had minimal effect on object detection accuracy and even improved performance in some cases [3]. However, in other studies, compression decreased the accuracy [2]. 
+
+The state of the art also includes some methods of mitigating accuracy loss. In [2], the authors created an importance map based on the first convolution layers and used it to guide the HEVC bit allocation. Other papers trained neural networks directly on JPEG data [5] and achieved reasonable accuracy.
+
+* Novelty & Rationale:
+    Existing papers often investigate the impact of JPEG and HEVC compression algorithms on object detectors. Our approach instead investigates the impact of downscaling with other algorithms such as Lanczos, bilinear, bicubic and hamming downscaling. Additionally, previous papers investigated the problem in different domains. In [3], the authors explored the impact of compression in high resolution satellite images. Our project focuses on small images captured by robots.
+    
+* Potential Impact:
+    It could help us to have a better understanding of the impact of the compression on the images, time for request and resulting classification. As a result, we could know how much compression should be applied to images to achieve certain accuracy and request time.
+    
+* Challenges:
+    One challenge is minimizing the latency of communication between the robot and the edge device. There is a risk that the latency will be too large and moving the computation to the edge device will make the system not responsive enough to avoid obstacles in real time.
+
+Another challenge is that the robot has limited computational power. Compressing the image before sending it may increase the total latency if compressing takes much longer than sending the data. 
+
+* Requirements for Success:
+    We will need two Raspberry Pis. One is serving as a client that has a motor controller and a camera to take pictures. One is serving as a server to receive pictures and run the object detection model and send results back to the client. For client-server communication, we use HTTP as our communication protocol over Wi-Fi.
+For image compression, we have knowledge about different image and video compression strategies and we will need to find optimized algorithms for the ones which we evaluate.
+
+* Metrics of Success:
+    One metric for success is the quality of our comparison between the lossy compression and the request time and being able to explain the differences in their performances. 
+One metric for success is the accuracy and the speed of the model. We will need a model that can detect obstacles accurately and fast. At the same time, the model should not be overfitting or underfitting. We will use Average Precision (AP) which is a popular metric to measure the accuracy of the object detection model.
+Lastly, one important criteria for success is whether the robot will be able to avoid obstacles without being unreasonably slow.
+
 
 # 2. Related Work
 
