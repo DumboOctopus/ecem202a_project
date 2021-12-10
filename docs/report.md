@@ -15,7 +15,9 @@ Lossy compression is a commonly used technique in different fields, especially e
 
 This section should cover the following items:
 
-* Motivation & Objective: What are you trying to do and why? (plain English without jargon)
+* Motivation & Objective: 
+    Embedded and Internet of Things (IoT) devices are becoming more and more important these days. They often rely on Artificial Intelligence to make them more powerful. However, embedded devices normally do not have powerful computing capabilities to do complicated tasks, so it’s common to send data to the server, which has stronger computing power, to process. In our project, we built a robot avoiding obstacles while it’s running in the building. The robot will capture the image in front of it and send it to the server to tell whether there’s an obstacle. We analyzed the trade-off between lossy compression versus model accuracy and request time. We used two Raspberry Pis, one as client, one as server, to emulate the scenario of sending images to server to perform object detection, then send back results to client.
+    
 * State of the Art & Its Limitations: How is it done today, and what are the limits of current practice?
 * Novelty & Rationale: What is new in your approach and why do you think it will be successful?
 * Potential Impact: If the project is successful, what difference will it make, both technically and broadly?
