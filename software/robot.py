@@ -33,27 +33,68 @@ server_addr = 'http://192.168.1.19:8080/test'
 
 
 def setup():
+
   GPIO.setmode(GPIO.BCM)
   global right_motor
   global left_motor
+  global session
   right_motor = Motor(13, 19, 26);
   left_motor = Motor(12, 2, 3);
+  session = requests.Session()
   initialize_camera()
 
 
-
-def ask_server(my_stream):
+def ask_server_without_resize(my_stream):
   t0 = time.time()
   my_stream.seek(0)
+
+  # request
   files = {"media": ('file.jpg', my_stream, 'image/jpg')}
   #print(requests.Request('POST', 'http://example.com', files=files).prepare().body)
-  response = requests.post(server_addr, files=files)#, headers=headers)
+  response = session.post(server_addr, files=files)#, headers=headers)
   t1 = time.time()
+
   my_stream.close()
   try:
       data = response.json()
       print(data)
-      print('time:', t1 - t0)
+      print('time total:', t1 - t0)
+      # print('time proc: ', t2 - t0)
+      return data['obstacles']
+  except requests.exceptions.RequestException:
+      print(response.text)
+
+  return False
+
+def ask_server(my_stream):
+  t0 = time.time()
+  my_stream.seek(0)
+
+  pil_image = Image.open(my_stream)
+
+  # resize
+  resized = pil_image.resize((416, 416))
+
+  buf = io.BytesIO()
+  resized.save(buf, format="JPEG")
+  buf.seek(0)
+  t2 = time.time()
+
+  # request
+  files = {"media": ('file.jpg', buf, 'image/jpg')}
+  #print(requests.Request('POST', 'http://example.com', files=files).prepare().body)
+  response = session.post(server_addr, files=files)#, headers=headers)
+  t1 = time.time()
+
+  my_stream.close()
+  buf.close()
+  try:
+      data = response.json()
+      print(data)
+      total_time = t1-t0
+      proc_time = t2 - t0
+      print('time total:', total_time)
+      print('time proc: ', proc_time)
       return data['obstacles']
   except requests.exceptions.RequestException:
       print(response.text)
@@ -65,7 +106,9 @@ def ask_server(my_stream):
 def initialize_camera():
   global camera
   camera = picamera.PiCamera()
-  camera.resolution = (416,416)
+  camera.resolution = (1080, 1080)
+  camera.rotation = 180
+  # camera.resolution = (416,416)
   camera.start_preview()
   time.sleep(3)
 
@@ -93,7 +136,7 @@ def loop():
     set_motors(70, 64, right_motor, left_motor)
     time.sleep(1)
     set_motors(0,0, right_motor, left_motor)
-    if ask_server(capture_pic()):
+    if ask_server_without_resize(capture_pic()):
       # obstacle detected
       turn_right()
       set_motors(70, 70, right_motor, left_motor)
@@ -154,5 +197,6 @@ if  __name__ == '__main__':
     setup()
     try:
         loop()
-    except KeyboardInterrupt:
+    except (Exception, KeyboardInterrupt) as e:
+        print(e)
         destroy()
