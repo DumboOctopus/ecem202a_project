@@ -64,7 +64,8 @@ We evaluated the different compression methods by first taking 120 images from t
 <p align="center">
   <img src="media/image1.png" />
 </p>
-Figure 1: Details on the message exchanged between the robot and the server and the points where timestamps are taken
+<center>Figure 1: Details on the message exchanged between the robot and the server and the points where timestamps are taken
+</center>
 
 # 5. Discussion and Conclusions
 
