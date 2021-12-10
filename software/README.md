@@ -1,5 +1,3 @@
-Add your project's code to this folder.
-
 `analyze_model_AP.ipynb` = jupyter notebook for analyzing average precision and generating graphs
 
 `analyzing_notebook.ipynb` = juypter notebook for analyzing latency
