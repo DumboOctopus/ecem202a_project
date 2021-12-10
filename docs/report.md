@@ -64,9 +64,9 @@ We evaluated the different compression methods by first taking 120 images from t
 <p align="center">
   <img src="media/image1.png" />
 </p>
-<div align="center">
+<p align="center">
   Figure 1: Details on the message exchanged between the robot and the server and the points where timestamps are taken
-</div>
+</p>
 
 
 The data we recorded does not store the timestamps but differences between certain timestamps. The server always uses the same upscaling algorithm (bicubic) while the robot uses different downscaling methods based on the experiment. After the robot downscales the image, it will encode it in JPEG with JPEG quality set to 75% and transmit to the server.
@@ -78,9 +78,9 @@ Figure 2 shows the turnaround time for the system when using different downscali
 <p align="center">
   <img src="media/image8.png" />
 </p>
-<div align="center">
+<p align="center">
   Figure 2: Turnaround time with different compression methods and image sizes
-</div>
+</p>
 
 We noticed that there are clearly some algorithms which produce faster turnaround time. In particular, the bicubic algorithm achieves the best turnaround time while the lanczos has the worst. Next we will discuss reasons why it achieved the best time.
 
@@ -98,9 +98,9 @@ Wi-Fi has such high throughput that the image size does not affect latency signi
 <p align="center">
   <img src="media/image5.png" />
 </p>
-<div align="center">
+<p align="center">
   Figure 4:Turnaround time versus compression method and image size using simulated Zigbee
-</div>
+</p>
 
 Despite Zigbee being a slower protocol, it still shows similar results. We also have observed that the model inference time is relatively constant. This tells us that the compression and decompression time terms dominate the transmission time terms. 
 
@@ -116,9 +116,9 @@ Figure 5 and Figure 6 show us that the downscaling takes the most time. Thus we 
 <p align="center">
   <img src="media/image9.png" />
 </p>
-<div align="center">
+<p align="center">
   Figure 6: The time taken for the server to upscale the image for different image sizes and algorithms. The algorithm refers to the algorithm used for downscaling
-</div>
+</p>
 
 One major reason downscaling takes much longer is because of hardware differences. The robot used a Raspberry Pi 1 B+ while the server used a Raspberry Pi 4 B. The Raspberry Pi 4 B h has a 1.5GHz processor while the Raspberry Pi 1 B+ has only a 700MHz processor. 
 
@@ -135,9 +135,9 @@ For example, Figure 7 shows the precision-recall curve with bilinear compression
 <p align="center">
   <img src="media/image7.png" />
 </p>
-<div align="center">
+<p align="center">
   Figure 7: Precision-Recall Curve for Bilinear algorithm with image resolution (416, 416)
-</div>
+</p>
 
 By calculating the area below the curve, we can get the average precision equals to 0.947.
 From Figure 8, we can see that as the image size decreases, the average precision decreases too.
@@ -145,9 +145,9 @@ From Figure 8, we can see that as the image size decreases, the average precisio
 <p align="center">
   <img src="media/image3.png" />
 </p>
-<div align="center">
+<p align="center">
   Figure 8: Average Precision versus Compression Method and Image Size
-</div>
+</p>
 
 # 5. Discussion and Conclusions
 
