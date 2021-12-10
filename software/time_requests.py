@@ -58,7 +58,7 @@ def ask_server(my_stream):
 
 
 if __name__ == '__main__':
-    folder_of_images = 'origin_dataset'
+    folder_of_images = '../data/origin_dataset'
     files = os.listdir(folder_of_images)
 
     first_image = files[0]
