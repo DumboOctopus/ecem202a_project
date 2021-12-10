@@ -89,9 +89,9 @@ Figure 3 shows the median transmission time versus image size. This includes the
 <p align="center">
   <img src="media/image6.png" />
 </p>
-<div align="center">
+<p align="center">
   Figure 3: Transmission Time of image versus image size
-</div>
+</p>
 
 Wi-Fi has such high throughput that the image size does not affect latency significantly at all. If this robot were to use a slower communication protocol such as Zigbee, we expect to notice a direct relationship between the transmission time and the image size. In Figure 4, we estimate the total time of the exchange if Zigbee was used instead of Wi-Fi. We assumed that Zigbee had a transfer rate of 250 kbps [6]. We produced this estimate by adding the downscaling time, the server side operations time and the image size divided by zigbee’s transfer rate.
 
