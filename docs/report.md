@@ -68,6 +68,19 @@ We evaluated the different compression methods by first taking 120 images from t
   Figure 1: Details on the message exchanged between the robot and the server and the points where timestamps are taken
 </div>
 
+The data we recorded does not store the timestamps but differences between certain timestamps. The server always uses the same upscaling algorithm (bicubic) while the robot uses different downscaling methods based on the experiment. After the robot downscales the image, it will encode it in JPEG with JPEG quality set to 75% and transmit to the server.
+
+During experimentation, we noticed that occasionally the time for the whole process would randomly spike. We determined that this extra latency came from random increases in the time it takes to transmit the image over Wi-Fi. To remove these outliers, we made the robot send each image 5 times. During calculations, we used the median of these 5 repetitions to eliminate outliers due to random network conditions.
+
+Figure 2 shows the turnaround time for the system when using different downscaling algorithms and final image sizes. We computed the turnaround times by computing R3-R1 where R1 and R3 are defined in Figure 1.
+
+<p align="center">
+  <img src="media/image2.png" />
+</p>
+<div align="center">
+  Figure 2: Turnaround time with different compression methods and image sizes
+</div>
+
 # 5. Discussion and Conclusions
 
 We conclude that downscaling and upscaling images can achieve reasonable accuracy in object detectors. We also concluded that one key bottleneck to such a system is the downscaling time on the embedded device. If the embedded device does not have enough computational resources, then downscaling can add significant latency. We also noticed that on fast communications such as Wifi and even on slower links like Zigbee, the downscaling time was more significant than the network latency. Thus algorithms which took less time to downscale outperformed algorithms which reduced image size more but took longer to run. Thus the bicubic algorithm performed best in terms of total latency of the system. 
