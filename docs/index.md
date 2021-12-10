@@ -1,8 +1,6 @@
 # Abstract
 
-We will compare the performance of a robot when the control algorithm is executed on an separate device and when the control algorithm is executed on the robot itself. 
-
-We will explore this problem in a simple use case where a robot tries to navigate a hallway filled with obstacles.
+Lossy compression is a commonly used technique in different fields, especially embedded devices. However, its effects on object classification still need to be investigated. In this project, we analyzed the effects of lossy compression of images on the object detection model. We tradeoff of model accuracy and latency of sending images over a network and performing the compression. We analyzed four different compression algorithms on our image dataset and collected the request time and model accuracy. We found that the bicubic downscaling algorithm minimized the system’s latency because the downscaling computational time was the most significant term in the overall latency. Additionally, we found that the bilinear downscaling algorithm caused the smallest reduction in model accuracy, even when the image was downscaled 10x. Overall we found the bicubic and bilinear algorithms had a reasonable tradeoff between latency and model accuracy.
 
 # Team
 
