@@ -61,7 +61,9 @@ We used YOLOv3-tiny as our object detection model. The reason why we choose it i
 
 We evaluated the different compression methods by first taking 120 images from the robot’s camera without any downscaling. Then using this existing set of images, we programmed the robot to downscale these images to different resolutions using different algorithms and send these images to the server. Both the robot and the server will record the time it takes to perform certain operations such as downscaling the image and the server processing time. Figure 1 shows the time intervals that were recorded by showing the locations where timestamps were taken. 
 
-![Figure 1](media/image1.png)
+<p align="center">
+  <img src="media/image1.png" />
+</p>
 Figure 1: Details on the message exchanged between the robot and the server and the points where timestamps are taken
 
 # 5. Discussion and Conclusions
