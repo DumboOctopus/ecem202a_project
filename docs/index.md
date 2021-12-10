@@ -11,5 +11,5 @@ Lossy compression is a commonly used technique in different fields, especially e
 
 * [Proposal](proposal)
 * [Midterm Checkpoint Presentation Slides](https://docs.google.com/presentation/d/1Kj6vXsNdJutJDV4BZEIuXOJpnmdhZLw2z4csMEBuo5k/edit#slide=id.p)
-* [Final Presentation Slides](https://docs.google.com/presentation/d/1V2OVSa5LZTNG0FJv18XL8g6pz3JAFtowmMsRv8NLZq0/edit#slide=id.p)
+* [Final Presentation Slides](https://docs.google.com/presentation/d/1V2OVSa5LZTNG0FJv18XL8g6pz3JAFtowmMsRv8NLZq0/edit?usp=sharing&fbclid=IwAR0qmA8rdiBYomJ_Bepoh37TKnOYXAL5bWgdPSHlGLqhFDC780pcVHYM-BM)
 * [Final Report](report)
