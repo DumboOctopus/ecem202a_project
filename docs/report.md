@@ -59,6 +59,11 @@ We used YOLOv3-tiny as our object detection model. The reason why we choose it i
 
 # 4. Evaluation and Results
 
+We evaluated the different compression methods by first taking 120 images from the robot’s camera without any downscaling. Then using this existing set of images, we programmed the robot to downscale these images to different resolutions using different algorithms and send these images to the server. Both the robot and the server will record the time it takes to perform certain operations such as downscaling the image and the server processing time. Figure 1 shows the time intervals that were recorded by showing the locations where timestamps were taken. 
+
+![Figure 1](media/image1.png)
+Figure 1: Details on the message exchanged between the robot and the server and the points where timestamps are taken
+
 # 5. Discussion and Conclusions
 
 We conclude that downscaling and upscaling images can achieve reasonable accuracy in object detectors. We also concluded that one key bottleneck to such a system is the downscaling time on the embedded device. If the embedded device does not have enough computational resources, then downscaling can add significant latency. We also noticed that on fast communications such as Wifi and even on slower links like Zigbee, the downscaling time was more significant than the network latency. Thus algorithms which took less time to downscale outperformed algorithms which reduced image size more but took longer to run. Thus the bicubic algorithm performed best in terms of total latency of the system. 
